@@ -7,14 +7,10 @@ module.exports = ({ env }) => ({
         client: 'postgres',
         host: env('DATABASE_HOST', 'localhost'),
         port: env.int('DATABASE_PORT', 5432),
-        database: env('DATABASE_NAME', 'strapi-bazyaft'),
+        database: env('DATABASE_NAME', 'strapi_bazyaft'),
         username: env('DATABASE_USERNAME', 'postgres'),
-        password: env('DATABASE_PASSWORD', ''),
-        schema: env('DATABASE_SCHEMA', 'public'), // Not Required
-        ssl: {
-          rejectUnauthorized: env.bool('DATABASE_SSL_SELF', false), // For self-signed certificates
-        },
-      },
+        password: env('DATABASE_PASSWORD', 'postGRES@@'),
+        schema: env('DATABASE_SCHEMA', 'public')}, // Not Required
       options: {},
     },
   },

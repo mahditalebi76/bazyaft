@@ -1,18 +1,18 @@
 {
   "paths": {
-    "/categories": {
+    "/items": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Find all the items's records",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve items document(s)",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Category"
+                    "$ref": "#/components/schemas/Items"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Category"
+          "Items"
         ],
         "parameters": [
           {
@@ -194,14 +194,14 @@
       },
       "post": {
         "deprecated": false,
-        "description": "Create a new record",
+        "description": "Create a new items record",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve items document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Category"
+                  "$ref": "#/components/schemas/Items"
                 }
               }
             }
@@ -239,7 +239,7 @@
         },
         "summary": "",
         "tags": [
-          "Category"
+          "Items"
         ],
         "requestBody": {
           "description": "",
@@ -247,20 +247,20 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewCategory"
+                "$ref": "#/components/schemas/NewItems"
               }
             }
           }
         }
       }
     },
-    "/categories/count": {
+    "/items/count": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Retrieve the numver of items documents",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve items document(s)",
             "content": {
               "application/json": {
                 "schema": {
@@ -306,22 +306,22 @@
         },
         "summary": "",
         "tags": [
-          "Category"
+          "Items"
         ],
         "parameters": []
       }
     },
-    "/categories/{id}": {
+    "/items/{id}": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Find one items record",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve items document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Category"
+                  "$ref": "#/components/schemas/Items"
                 }
               }
             }
@@ -359,7 +359,7 @@
         },
         "summary": "",
         "tags": [
-          "Category"
+          "Items"
         ],
         "parameters": [
           {
@@ -376,14 +376,14 @@
       },
       "put": {
         "deprecated": false,
-        "description": "Update a record",
+        "description": "Update a single items record",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve items document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Category"
+                  "$ref": "#/components/schemas/Items"
                 }
               }
             }
@@ -421,7 +421,7 @@
         },
         "summary": "",
         "tags": [
-          "Category"
+          "Items"
         ],
         "requestBody": {
           "description": "",
@@ -429,7 +429,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewCategory"
+                "$ref": "#/components/schemas/NewItems"
               }
             }
           }
@@ -449,10 +449,10 @@
       },
       "delete": {
         "deprecated": false,
-        "description": "Delete a record",
+        "description": "Delete a single items record",
         "responses": {
           "200": {
-            "description": "deletes a single record based on the ID supplied",
+            "description": "deletes a single items based on the ID supplied",
             "content": {
               "application/json": {
                 "schema": {
@@ -495,7 +495,7 @@
         },
         "summary": "",
         "tags": [
-          "Category"
+          "Items"
         ],
         "parameters": [
           {
@@ -514,7 +514,7 @@
   },
   "components": {
     "schemas": {
-      "Category": {
+      "Items": {
         "required": [
           "id"
         ],
@@ -525,16 +525,154 @@
           "Name": {
             "type": "string"
           },
+          "Description": {
+            "type": "string"
+          },
+          "Image": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "name",
+                "hash",
+                "mime",
+                "size",
+                "url",
+                "provider"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "alternativeText": {
+                  "type": "string"
+                },
+                "caption": {
+                  "type": "string"
+                },
+                "width": {
+                  "type": "integer"
+                },
+                "height": {
+                  "type": "integer"
+                },
+                "formats": {
+                  "type": "object"
+                },
+                "hash": {
+                  "type": "string"
+                },
+                "ext": {
+                  "type": "string"
+                },
+                "mime": {
+                  "type": "string"
+                },
+                "size": {
+                  "type": "number"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "previewUrl": {
+                  "type": "string"
+                },
+                "provider": {
+                  "type": "string"
+                },
+                "provider_metadata": {
+                  "type": "object"
+                },
+                "related": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "Recyclable": {
+            "type": "string",
+            "enum": [
+              "Recyclable",
+              "Not_Recyclable",
+              "Limited"
+            ]
+          },
+          "Dry": {
+            "type": "boolean"
+          },
+          "UseCases": {
+            "type": "string"
+          },
+          "CarbonFootprint": {
+            "type": "number"
+          },
+          "WaterFootprint": {
+            "type": "number"
+          },
+          "Category": {
+            "type": "string",
+            "enum": [
+              "glass",
+              "metal",
+              "paper",
+              "plastic",
+              "dangerous",
+              "compost"
+            ]
+          },
           "published_at": {
             "type": "string",
             "format": "date-time"
           }
         }
       },
-      "NewCategory": {
+      "NewItems": {
         "properties": {
           "Name": {
             "type": "string"
+          },
+          "Description": {
+            "type": "string"
+          },
+          "Recyclable": {
+            "type": "string",
+            "enum": [
+              "Recyclable",
+              "Not_Recyclable",
+              "Limited"
+            ]
+          },
+          "Dry": {
+            "type": "boolean"
+          },
+          "UseCases": {
+            "type": "string"
+          },
+          "CarbonFootprint": {
+            "type": "number"
+          },
+          "WaterFootprint": {
+            "type": "number"
+          },
+          "Category": {
+            "type": "string",
+            "enum": [
+              "glass",
+              "metal",
+              "paper",
+              "plastic",
+              "dangerous",
+              "compost"
+            ]
           },
           "published_at": {
             "type": "string",
@@ -552,7 +690,7 @@
   },
   "tags": [
     {
-      "name": "Category"
+      "name": "Items"
     }
   ]
 }
