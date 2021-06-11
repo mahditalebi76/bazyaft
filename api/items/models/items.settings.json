@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "items",
   "info": {
-    "name": "Items"
+    "name": "Items",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -59,6 +60,12 @@
         "dangerous",
         "compost"
       ]
+    },
+    "CarbonFootprintUnit": {
+      "type": "string"
+    },
+    "WaterFootprintUnit": {
+      "type": "string"
     }
   }
 }

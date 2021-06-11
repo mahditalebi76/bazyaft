@@ -5,4 +5,25 @@
  * to customize this controller
  */
 
-module.exports = {};
+module.exports = {
+
+
+  findSmall :
+  async (ctx) => {
+    const result = await strapi.query("items").model.fetchAll({
+      columns: ["id", "Name","Recyclable","Category"],
+      // withRelated: [
+      //   {
+      //     'basecategory': qb => {qb.columns("id","name")},
+      //     'image': qb => {qb.columns('id','url')},
+      //   },
+      // ],
+    });
+    ctx.send(result)
+ },
+
+  // .populate('orders', 'amount');
+
+
+};
+

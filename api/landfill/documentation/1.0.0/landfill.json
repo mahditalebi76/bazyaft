@@ -1,18 +1,18 @@
 {
   "paths": {
-    "/items": {
+    "/landfills": {
       "get": {
         "deprecated": false,
-        "description": "Find all the items's records",
+        "description": "",
         "responses": {
           "200": {
-            "description": "Retrieve items document(s)",
+            "description": "response",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Items"
+                    "$ref": "#/components/schemas/Landfill"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Items"
+          "Landfill"
         ],
         "parameters": [
           {
@@ -194,14 +194,14 @@
       },
       "post": {
         "deprecated": false,
-        "description": "Create a new items record",
+        "description": "Create a new record",
         "responses": {
           "200": {
-            "description": "Retrieve items document(s)",
+            "description": "response",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Items"
+                  "$ref": "#/components/schemas/Landfill"
                 }
               }
             }
@@ -239,7 +239,7 @@
         },
         "summary": "",
         "tags": [
-          "Items"
+          "Landfill"
         ],
         "requestBody": {
           "description": "",
@@ -247,77 +247,20 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewItems"
+                "$ref": "#/components/schemas/NewLandfill"
               }
             }
           }
         }
       }
     },
-    "/itemsSmall": {
+    "/landfills/count": {
       "get": {
         "deprecated": false,
         "description": "",
         "responses": {
           "200": {
             "description": "response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "foo": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "summary": "",
-        "tags": [
-          "Items"
-        ],
-        "parameters": []
-      }
-    },
-    "/items/count": {
-      "get": {
-        "deprecated": false,
-        "description": "Retrieve the numver of items documents",
-        "responses": {
-          "200": {
-            "description": "Retrieve items document(s)",
             "content": {
               "application/json": {
                 "schema": {
@@ -363,22 +306,22 @@
         },
         "summary": "",
         "tags": [
-          "Items"
+          "Landfill"
         ],
         "parameters": []
       }
     },
-    "/items/{id}": {
+    "/landfills/{id}": {
       "get": {
         "deprecated": false,
-        "description": "Find one items record",
+        "description": "",
         "responses": {
           "200": {
-            "description": "Retrieve items document(s)",
+            "description": "response",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Items"
+                  "$ref": "#/components/schemas/Landfill"
                 }
               }
             }
@@ -416,7 +359,7 @@
         },
         "summary": "",
         "tags": [
-          "Items"
+          "Landfill"
         ],
         "parameters": [
           {
@@ -433,14 +376,14 @@
       },
       "put": {
         "deprecated": false,
-        "description": "Update a single items record",
+        "description": "Update a record",
         "responses": {
           "200": {
-            "description": "Retrieve items document(s)",
+            "description": "response",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Items"
+                  "$ref": "#/components/schemas/Landfill"
                 }
               }
             }
@@ -478,7 +421,7 @@
         },
         "summary": "",
         "tags": [
-          "Items"
+          "Landfill"
         ],
         "requestBody": {
           "description": "",
@@ -486,7 +429,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewItems"
+                "$ref": "#/components/schemas/NewLandfill"
               }
             }
           }
@@ -506,10 +449,10 @@
       },
       "delete": {
         "deprecated": false,
-        "description": "Delete a single items record",
+        "description": "Delete a record",
         "responses": {
           "200": {
-            "description": "deletes a single items based on the ID supplied",
+            "description": "deletes a single record based on the ID supplied",
             "content": {
               "application/json": {
                 "schema": {
@@ -552,7 +495,7 @@
         },
         "summary": "",
         "tags": [
-          "Items"
+          "Landfill"
         ],
         "parameters": [
           {
@@ -571,7 +514,7 @@
   },
   "components": {
     "schemas": {
-      "Items": {
+      "Landfill": {
         "required": [
           "id"
         ],
@@ -579,13 +522,290 @@
           "id": {
             "type": "string"
           },
-          "Name": {
+          "GoogleEarthVideo": {
+            "required": [
+              "id",
+              "name",
+              "hash",
+              "mime",
+              "size",
+              "url",
+              "provider"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "alternativeText": {
+                "type": "string"
+              },
+              "caption": {
+                "type": "string"
+              },
+              "width": {
+                "type": "integer"
+              },
+              "height": {
+                "type": "integer"
+              },
+              "formats": {
+                "type": "object"
+              },
+              "hash": {
+                "type": "string"
+              },
+              "ext": {
+                "type": "string"
+              },
+              "mime": {
+                "type": "string"
+              },
+              "size": {
+                "type": "number"
+              },
+              "url": {
+                "type": "string"
+              },
+              "previewUrl": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "provider_metadata": {
+                "type": "object"
+              },
+              "related": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
+          },
+          "CityImage": {
+            "required": [
+              "id",
+              "name",
+              "hash",
+              "mime",
+              "size",
+              "url",
+              "provider"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "alternativeText": {
+                "type": "string"
+              },
+              "caption": {
+                "type": "string"
+              },
+              "width": {
+                "type": "integer"
+              },
+              "height": {
+                "type": "integer"
+              },
+              "formats": {
+                "type": "object"
+              },
+              "hash": {
+                "type": "string"
+              },
+              "ext": {
+                "type": "string"
+              },
+              "mime": {
+                "type": "string"
+              },
+              "size": {
+                "type": "number"
+              },
+              "url": {
+                "type": "string"
+              },
+              "previewUrl": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "provider_metadata": {
+                "type": "object"
+              },
+              "related": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
+          },
+          "Latitude": {
+            "type": "string"
+          },
+          "Longitude": {
+            "type": "string"
+          },
+          "Video3DLink": {
             "type": "string"
           },
           "Description": {
             "type": "string"
           },
-          "Image": {
+          "TimelapseVideoLink": {
+            "type": "string"
+          },
+          "LiveVideo1": {
+            "required": [
+              "id",
+              "name",
+              "hash",
+              "mime",
+              "size",
+              "url",
+              "provider"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "alternativeText": {
+                "type": "string"
+              },
+              "caption": {
+                "type": "string"
+              },
+              "width": {
+                "type": "integer"
+              },
+              "height": {
+                "type": "integer"
+              },
+              "formats": {
+                "type": "object"
+              },
+              "hash": {
+                "type": "string"
+              },
+              "ext": {
+                "type": "string"
+              },
+              "mime": {
+                "type": "string"
+              },
+              "size": {
+                "type": "number"
+              },
+              "url": {
+                "type": "string"
+              },
+              "previewUrl": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "provider_metadata": {
+                "type": "object"
+              },
+              "related": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
+          },
+          "LiveVideo2": {
+            "required": [
+              "id",
+              "name",
+              "hash",
+              "mime",
+              "size",
+              "url",
+              "provider"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "alternativeText": {
+                "type": "string"
+              },
+              "caption": {
+                "type": "string"
+              },
+              "width": {
+                "type": "integer"
+              },
+              "height": {
+                "type": "integer"
+              },
+              "formats": {
+                "type": "object"
+              },
+              "hash": {
+                "type": "string"
+              },
+              "ext": {
+                "type": "string"
+              },
+              "mime": {
+                "type": "string"
+              },
+              "size": {
+                "type": "number"
+              },
+              "url": {
+                "type": "string"
+              },
+              "previewUrl": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "provider_metadata": {
+                "type": "object"
+              },
+              "related": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
+          },
+          "ImagesAlbum": {
             "type": "array",
             "items": {
               "required": [
@@ -655,41 +875,150 @@
               }
             }
           },
-          "Recyclable": {
-            "type": "string",
-            "enum": [
-              "Recyclable",
-              "Not_Recyclable",
-              "Limited"
-            ]
+          "VideosAlbum": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "name",
+                "hash",
+                "mime",
+                "size",
+                "url",
+                "provider"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "alternativeText": {
+                  "type": "string"
+                },
+                "caption": {
+                  "type": "string"
+                },
+                "width": {
+                  "type": "integer"
+                },
+                "height": {
+                  "type": "integer"
+                },
+                "formats": {
+                  "type": "object"
+                },
+                "hash": {
+                  "type": "string"
+                },
+                "ext": {
+                  "type": "string"
+                },
+                "mime": {
+                  "type": "string"
+                },
+                "size": {
+                  "type": "number"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "previewUrl": {
+                  "type": "string"
+                },
+                "provider": {
+                  "type": "string"
+                },
+                "provider_metadata": {
+                  "type": "object"
+                },
+                "related": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
+              }
+            }
           },
-          "Dry": {
-            "type": "boolean"
+          "ChartDetails": {
+            "type": "object"
           },
-          "UseCases": {
+          "GolbadImage": {
+            "required": [
+              "id",
+              "name",
+              "hash",
+              "mime",
+              "size",
+              "url",
+              "provider"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "alternativeText": {
+                "type": "string"
+              },
+              "caption": {
+                "type": "string"
+              },
+              "width": {
+                "type": "integer"
+              },
+              "height": {
+                "type": "integer"
+              },
+              "formats": {
+                "type": "object"
+              },
+              "hash": {
+                "type": "string"
+              },
+              "ext": {
+                "type": "string"
+              },
+              "mime": {
+                "type": "string"
+              },
+              "size": {
+                "type": "number"
+              },
+              "url": {
+                "type": "string"
+              },
+              "previewUrl": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "provider_metadata": {
+                "type": "object"
+              },
+              "related": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
+          },
+          "AparatVideosLinks": {
             "type": "string"
           },
-          "CarbonFootprint": {
-            "type": "number"
-          },
-          "WaterFootprint": {
-            "type": "number"
-          },
-          "Category": {
-            "type": "string",
-            "enum": [
-              "glass",
-              "metal",
-              "paper",
-              "plastic",
-              "dangerous",
-              "compost"
-            ]
-          },
-          "CarbonFootprintUnit": {
-            "type": "string"
-          },
-          "WaterFootprintUnit": {
+          "Name": {
             "type": "string"
           },
           "published_at": {
@@ -698,49 +1027,30 @@
           }
         }
       },
-      "NewItems": {
+      "NewLandfill": {
         "properties": {
-          "Name": {
+          "Latitude": {
+            "type": "string"
+          },
+          "Longitude": {
+            "type": "string"
+          },
+          "Video3DLink": {
             "type": "string"
           },
           "Description": {
             "type": "string"
           },
-          "Recyclable": {
-            "type": "string",
-            "enum": [
-              "Recyclable",
-              "Not_Recyclable",
-              "Limited"
-            ]
-          },
-          "Dry": {
-            "type": "boolean"
-          },
-          "UseCases": {
+          "TimelapseVideoLink": {
             "type": "string"
           },
-          "CarbonFootprint": {
-            "type": "number"
+          "ChartDetails": {
+            "type": "object"
           },
-          "WaterFootprint": {
-            "type": "number"
-          },
-          "Category": {
-            "type": "string",
-            "enum": [
-              "glass",
-              "metal",
-              "paper",
-              "plastic",
-              "dangerous",
-              "compost"
-            ]
-          },
-          "CarbonFootprintUnit": {
+          "AparatVideosLinks": {
             "type": "string"
           },
-          "WaterFootprintUnit": {
+          "Name": {
             "type": "string"
           },
           "published_at": {
@@ -759,7 +1069,7 @@
   },
   "tags": [
     {
-      "name": "Items"
+      "name": "Landfill"
     }
   ]
 }

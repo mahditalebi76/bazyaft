@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/landfills",
+      "handler": "landfill.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/landfills/count",
+      "handler": "landfill.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/landfills/:id",
+      "handler": "landfill.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/landfills",
+      "handler": "landfill.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/landfills/:id",
+      "handler": "landfill.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/landfills/:id",
+      "handler": "landfill.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
