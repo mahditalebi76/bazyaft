@@ -10,6 +10,14 @@
     },
     {
       "method": "GET",
+      "path": "/landfillNames",
+      "handler": "landfill.findNameAndId",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/landfills/count",
       "handler": "landfill.count",
       "config": {
